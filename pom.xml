@@ -11,6 +11,7 @@
 	<modules>
 		<module>springweb-xmlconfig</module>
 		<module>springweb-javaconfig</module>
+		<module>springweb-xmlconfig-mybatis</module>
 	</modules>
 
 	<properties>

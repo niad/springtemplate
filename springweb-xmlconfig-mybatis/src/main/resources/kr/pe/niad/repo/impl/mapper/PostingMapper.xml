@@ -11,7 +11,7 @@
 	</resultMap>
 	
 	<insert id="insert" parameterType="Posting" useGeneratedKeys="true" keyProperty="id" keyColumn="id">
-		insert into posting(
+		insert into tb_posting(
 			title,
 			contents,
 			created_at,
@@ -31,7 +31,7 @@
 			contents,
 			created_at,
 			creator
-		from posting
+		from tb_posting
 		where id = #{id}
 	</select>
 
@@ -42,7 +42,7 @@
 			contents,
 			created_at,
 			creator
-		from posting
+		from tb_posting
 	</select>
 	
 </mapper>

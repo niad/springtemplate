@@ -1,4 +1,4 @@
-CREATE TABLE `posting` (
+CREATE TABLE `tb_posting` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(400) NOT NULL,
   `contents` text NOT NULL,

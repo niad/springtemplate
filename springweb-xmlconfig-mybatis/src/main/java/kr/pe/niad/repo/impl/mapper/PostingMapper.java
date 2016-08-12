@@ -1,6 +1,6 @@
 package kr.pe.niad.repo.impl.mapper;
 
-import kr.pe.niad.common.config.Mapper;
+import kr.pe.niad.common.annotation.Mapper;
 import kr.pe.niad.domain.Posting;
 
 import java.util.List;

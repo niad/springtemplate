@@ -39,7 +39,7 @@
 	</bean>
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 		<property name="basePackage" value="kr.pe.niad.repo"/>
-		<property name="annotationClass" value="kr.pe.niad.common.config.Mapper"/>
+		<property name="annotationClass" value="kr.pe.niad.common.annotation.Mapper"/>
 	</bean>
 
 </beans>

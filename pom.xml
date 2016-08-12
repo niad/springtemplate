@@ -9,8 +9,8 @@
 	<packaging>pom</packaging>
 	<version>1.0-SNAPSHOT</version>
 	<modules>
-		<module>springmybatis</module>
 		<module>springweb-xmlconfig</module>
+		<module>springweb-javaconfig</module>
 	</modules>
 
 	<properties>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:security="http://www.springframework.org/schema/security"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+       http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-4.1.xsd">
+
+    <!--
+        default login-page : /login (GET)
+        default login-processing_url : /login (POST)
+        default logout-url : /logout (POST)
+        default username param : username
+        default password param : password
+
+        default remember me param : remember-me
+
+    -->
+    <security:http auto-config="true" >
+        <!-- refer to http://docs.spring.io/spring-security/site/docs/4.1.0.RELEASE/reference/html/el-access.html -->
+        <security:intercept-url pattern="/css/**" access="permitAll" />
+        <security:intercept-url pattern="/img/**" access="permitAll" />
+        <security:intercept-url pattern="/js/**" access="permitAll" />
+        <security:intercept-url pattern="/lib/**" access="permitAll" />
+
+        <security:intercept-url pattern="/login*" access="permitAll" />
+		<security:intercept-url pattern="/" access="permitAll" />
+
+        <security:intercept-url pattern="/**" access="hasAnyRole('ROLE_USER','ROLE_ADMIN')" />
+
+        <security:form-login login-page="/login" login-processing-url="/login" default-target-url="/" authentication-failure-url="/login?err=1" />
+
+        <security:logout logout-url="/logout" delete-cookies="JSESSIONID,SPRING_SECURITY_REMEMBER_ME_COOKIE" logout-success-url="/" />
+
+        <!-- refer to http://docs.spring.io/spring-security/site/docs/4.1.0.RELEASE/reference/html/remember-me.html -->
+        <!-- cookie based rememberMe, must be changed key value before use template -->
+        <!-- <security:remember-me key="rememberMeKey" token-validity-seconds="2419200" remember-me-parameter="remember-me"/> -->
+
+        <security:remember-me data-source-ref="dataSource" />
+
+    </security:http>
+
+
+    <bean id="securityUserService" class="kr.pe.niad.web.security.SecurityUserService"/>
+
+    <bean id="passwordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>
+
+    <security:authentication-manager>
+        <security:authentication-provider user-service-ref="securityUserService">
+            <security:password-encoder ref="passwordEncoder"/>
+        </security:authentication-provider>
+    </security:authentication-manager>
+
+</beans>

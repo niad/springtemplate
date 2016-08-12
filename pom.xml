@@ -13,6 +13,7 @@
 		<module>springweb-javaconfig</module>
 		<module>springweb-xmlconfig-mybatis</module>
 		<module>springweb-javaconfig-mybatis</module>
+		<module>springweb-xmlconfig-mybatis-springsecurity</module>
 	</modules>
 
 	<properties>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.pe.niad.repo.impl.mapper.UserMapper">
+
+	<resultMap type="User" id="userResult">
+		<id column="id" property="id"/>
+		<result column="login_id" property="loginId"/>
+		<result column="password" property="password"/>
+		<result column="name" property="name"/>
+		<result column="role" property="role"/>
+	</resultMap>
+
+	<insert id="insert" parameterType="User" useGeneratedKeys="true" keyProperty="id" keyColumn="id">
+		insert into tb_user (
+			login_id,
+			password,
+			name,
+			role
+		) values (
+			#{loginId},
+			#{password},
+			#{name},
+			#{role}
+		)
+	</insert>
+
+	<select id="selectOne" parameterType="long" resultMap="userResult">
+		select
+			id,
+			login_id,
+			password,
+			name,
+			role
+		from tb_user
+		where id = #{id}
+	</select>
+
+	<select id="selectByLoginId" parameterType="string" resultMap="userResult">
+		select
+			id,
+			login_id,
+			password,
+			name,
+			role
+		from tb_user
+		where login_id = #{loginId}
+	</select>
+
+	<select id="selectList" resultMap="userResult">
+		select
+			id,
+			login_id,
+			password,
+			name,
+			role
+		from tb_user
+	</select>
+
+</mapper>
+
+
+
